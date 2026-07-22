@@ -424,49 +424,77 @@
 
 </x-dc>
 <script>
-  // Workaround for a real, reproduced bug in image-slot.js: each
-  // <image-slot> only gets its data-filled attribute (which hides the
-  // dashed "empty" placeholder ring) from its own _render(), and the only
-  // thing expected to re-trigger that after the photo finishes loading is
-  // a ResizeObserver set up in connectedCallback. That observer doesn't
-  // reliably land after load - reproduced locally (fresh page, fast
-  // localhost network, zero throttling): the ring stayed stuck visible
-  // indefinitely until _render() was called again by hand. Re-running
-  // _render() a few times after window 'load' is a safe, idempotent
-  // no-op when a slot already rendered correctly on its own, and reliably
-  // clears the stuck state on repeated fresh-load testing when it hadn't.
-  window.addEventListener('load', () => {
-    const rerenderSlots = () => {
-      document.querySelectorAll('image-slot').forEach((el) => {
-        if (typeof el._render === 'function') el._render();
+  // Two real, reproduced problems around <image-slot>, fixed together here.
+  //
+  // (1) Each <image-slot> only gets its data-filled attribute (which hides
+  // the dashed "empty" placeholder ring) from its own _render(), and the
+  // only thing expected to re-trigger that after the photo finishes
+  // loading is a ResizeObserver set up in connectedCallback. That observer
+  // doesn't reliably land after load - reproduced locally (fresh page,
+  // fast localhost network, zero throttling): the ring stayed stuck
+  // visible indefinitely until _render() was called again by hand.
+  //
+  // (2) The page's own framework (support.js) does a full client-side
+  // swap: the static, server-authored <x-dc> markup gets entirely
+  // replaced by a freshly React-rendered <div id="dc-root"> tree
+  // (confirmed directly: MutationObserver on <body>, single childList
+  // record, removedTags:["X-DC"] / addedTags:["DIV#dc-root"], firing
+  // ~110-115ms after navigation start on a fast local connection). That
+  // swap creates a BRAND NEW <image-slot> instance - the original one
+  // (and any fix gated on window 'load') is simply gone. Measured that
+  // swap landing within ~5-30ms of window 'load' firing in repeated local
+  // runs: those two events depend on entirely unrelated network fetches
+  // (this page's own image vs. React from an external unpkg.com CDN), so
+  // which one wins on a real, slower or differently-shaped connection is
+  // not something a 'load'-gated fix can rely on - it can easily end up
+  // re-rendering the old, about-to-be-destroyed slot instead of the one
+  // that actually persists.
+  //
+  // Fix: don't gate on 'load' at all. Watch the DOM directly for every
+  // <image-slot> that ever gets inserted - the original static one AND
+  // whatever the framework swaps in later - and harden each one
+  // individually, regardless of timing relative to anything else.
+  function hardenImageSlot(el) {
+    const rerender = () => {
+      if (typeof el._render === 'function') el._render();
+    };
+    const hidePopoverFallback = () => {
+      // Separate, confirmed-real fragility (not confirmed to cause the
+      // width bug under investigation, but worth closing regardless):
+      // .spill/.ctl inside image-slot.js's shadow DOM rely ENTIRELY on
+      // the native Popover API's UA stylesheet
+      // (`[popover]:not(:popover-open){display:none}`) for their
+      // default-hidden state - there's no author CSS fallback. Verified
+      // directly: stripping the popover attribute (what a non-supporting
+      // browser effectively sees) flips .spill's computed display from
+      // "none" to "block".
+      if (CSS.supports('selector(:popover-open)')) return;
+      const sr = el.shadowRoot;
+      if (!sr) return;
+      sr.querySelectorAll('.spill, .ctl').forEach((n) => {
+        n.style.display = 'none';
       });
     };
-    rerenderSlots();
-    setTimeout(rerenderSlots, 200);
-    setTimeout(rerenderSlots, 600);
-    setTimeout(rerenderSlots, 1500);
+    rerender();
+    hidePopoverFallback();
+    [200, 600, 1500].forEach((ms) => setTimeout(rerender, ms));
+  }
 
-    // Separate, confirmed-real fragility (not confirmed to cause the width
-    // bug under investigation, but worth closing regardless): .spill/.ctl
-    // inside image-slot.js's shadow DOM rely ENTIRELY on the native
-    // Popover API's UA stylesheet (`[popover]:not(:popover-open){display:
-    // none}`) for their default-hidden state - there's no author CSS
-    // fallback. Verified directly: stripping the popover attribute (what
-    // an unsupporting browser effectively sees) flips .spill's computed
-    // display from "none" to "block". On this page .spill's own width/
-    // height stay 0 either way (nothing sets them outside an active drag),
-    // so it isn't visibly reproducible here - but forcing it hidden when
-    // the API is missing costs nothing and removes the gap entirely.
-    if (!CSS.supports('selector(:popover-open)')) {
-      document.querySelectorAll('image-slot').forEach((el) => {
-        const sr = el.shadowRoot;
-        if (!sr) return;
-        sr.querySelectorAll('.spill, .ctl').forEach((n) => {
-          n.style.display = 'none';
-        });
+  function hardenAllIn(root) {
+    if (root.matches && root.matches('image-slot')) hardenImageSlot(root);
+    if (root.querySelectorAll) {
+      root.querySelectorAll('image-slot').forEach(hardenImageSlot);
+    }
+  }
+
+  hardenAllIn(document);
+  new MutationObserver((records) => {
+    for (const r of records) {
+      r.addedNodes.forEach((n) => {
+        if (n.nodeType === 1) hardenAllIn(n);
       });
     }
-  });
+  }).observe(document.body, { childList: true, subtree: true });
 </script>
 </body>
 </html>
