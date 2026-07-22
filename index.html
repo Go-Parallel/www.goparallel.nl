@@ -34,6 +34,16 @@
   .gp-check li svg{flex:none;}
   .gp-field label{font-size:13px;font-weight:600;color:#5A4A47;display:block;margin-bottom:7px;}
   .gp-field input,.gp-field textarea{font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#2A1A1A;background:#fff;border:1.5px solid #E5D9C8;border-radius:12px;padding:12px 14px;outline:none;width:100%;box-sizing:border-box;}
+  /* "Over Remke"-grid: mobiel-eerst, geen inline grid-template-columns meer
+     op dit element (zie #oprichter verderop) — dus geen !important nodig
+     en geen afhankelijkheid van een cascade-override die op een concreet
+     mobiel toestel bleek te falen (zie git-historie). Basisregel hieronder
+     is de mobiele default; desktop-kolommen komen pas via de min-width
+     media query terug. */
+  #oprichter .gp-grid2{grid-template-columns:1fr;}
+  @media (min-width:901px){
+    #oprichter .gp-grid2{grid-template-columns:minmax(0,410px) minmax(0,1fr) minmax(0,1fr);}
+  }
   @media (max-width:900px){
     .gp-navlinks{display:none;}
     .gp-grid2{grid-template-columns:1fr !important;}
@@ -346,7 +356,7 @@
 
   <!-- OPRICHTER -->
   <div id="oprichter" class="gp-section" style="background:var(--cream-deep);border-top:1px solid var(--line-soft);padding:80px 48px;scroll-margin-top:64px">
-    <div class="gp-grid2" style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:minmax(0,410px) minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center">
+    <div class="gp-grid2" style="max-width:1360px;margin:0 auto;display:grid;gap:40px;align-items:center">
       <div style="max-width:100%">
         <div style="width:100%;aspect-ratio:4/5"><image-slot id="oprichter-remke" shape="rounded" radius="20" style="width:100%;height:100%" placeholder="Portret Remke Hekers" src="uploads/remke-hekers-portret.jpg"></image-slot></div>
       </div>
