@@ -445,6 +445,27 @@
     setTimeout(rerenderSlots, 200);
     setTimeout(rerenderSlots, 600);
     setTimeout(rerenderSlots, 1500);
+
+    // Separate, confirmed-real fragility (not confirmed to cause the width
+    // bug under investigation, but worth closing regardless): .spill/.ctl
+    // inside image-slot.js's shadow DOM rely ENTIRELY on the native
+    // Popover API's UA stylesheet (`[popover]:not(:popover-open){display:
+    // none}`) for their default-hidden state - there's no author CSS
+    // fallback. Verified directly: stripping the popover attribute (what
+    // an unsupporting browser effectively sees) flips .spill's computed
+    // display from "none" to "block". On this page .spill's own width/
+    // height stay 0 either way (nothing sets them outside an active drag),
+    // so it isn't visibly reproducible here - but forcing it hidden when
+    // the API is missing costs nothing and removes the gap entirely.
+    if (!CSS.supports('selector(:popover-open)')) {
+      document.querySelectorAll('image-slot').forEach((el) => {
+        const sr = el.shadowRoot;
+        if (!sr) return;
+        sr.querySelectorAll('.spill, .ctl').forEach((n) => {
+          n.style.display = 'none';
+        });
+      });
+    }
   });
 </script>
 </body>
