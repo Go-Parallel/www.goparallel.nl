@@ -13,6 +13,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <script src="./image-slot.js?v=fb46a6f714"></script>
 <style>
+  /* Structural, timing-independent guard against horizontal overflow.
+     Root-caused (as far as remotely reproducible) that support.js swaps
+     the static <x-dc> markup for a React-rendered #dc-root tree client-
+     side, sourcing React/ReactDOM from an external unpkg.com CDN - on a
+     slow/blocked real mobile connection that fetch can fail or stall in
+     ways a fast, unrestricted local/devtools test never hits, and no
+     amount of correct *-render timing on our side prevents a broken or
+     partial result from an external dependency failing outright. Rather
+     than continuing to chase whichever internal element ends up
+     oversized when that happens, this makes the page itself incapable
+     of ever exposing that as visible blank space: html is the sole
+     scrolling root, so constraining IT (not body, which would create a
+     second scroll container and break .gp-nav's position:sticky further
+     down) guarantees any inner overflow gets clipped instead of widening
+     the whole page.
+  */
+  html{overflow-x:hidden;max-width:100vw;}
   body{margin:0;font-family:'Hanken Grotesk',sans-serif;}
   h1,h2,h3,h4,p,ul{margin:0;padding:0;}
   a{color:inherit;text-decoration:none;}
