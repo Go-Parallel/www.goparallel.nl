@@ -439,5 +439,31 @@
 </div>
 
 </x-dc>
+
+<div id="gp-cookie-banner" style="position:fixed;left:0;right:0;bottom:0;z-index:1000;display:none;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;background:#4E0A11;padding:16px 24px;font-family:'Hanken Grotesk',sans-serif">
+  <p style="max-width:640px;text-align:center;font-size:13.5px;line-height:1.5;color:#F0D49A;margin:0">Deze website gebruikt alleen technisch noodzakelijke functies — geen tracking- of analysecookies.</p>
+  <button type="button" id="gp-cookie-ok" style="flex:none;border-radius:999px;border:none;background:#FDB13A;color:#2A1A1A;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:13px;padding:9px 18px;cursor:pointer">Begrepen</button>
+</div>
+<script>
+  // Plain DOM script, buiten de x-dc/support.js-runtime om (zelfde aanpak
+  // als eventuele andere losse interactiescripts op deze pagina).
+  (function () {
+    var KEY = "gp-cookie-notice-dismissed";
+    var banner = document.getElementById("gp-cookie-banner");
+    try {
+      if (localStorage.getItem(KEY) !== "1") banner.style.display = "flex";
+    } catch (e) {
+      banner.style.display = "flex";
+    }
+    document.addEventListener("click", function (e) {
+      if (e.target && e.target.id === "gp-cookie-ok") {
+        banner.style.display = "none";
+        try {
+          localStorage.setItem(KEY, "1");
+        } catch (e) {}
+      }
+    });
+  })();
+</script>
 </body>
 </html>
