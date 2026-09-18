@@ -82,7 +82,7 @@
 <div style="--bordeaux:#A30F13;--bordeaux-deep:#6E0F18;--bordeaux-darker:#4E0A11;--gold:#FDB13A;--gold-deep:#E0922A;--gold-soft:#F0D49A;--gold-wash:#FAEFD8;--cream:#F8F2E8;--cream-deep:#F1E8D9;--paper:#FCF9F4;--ink:#2A1A1A;--ink-2:#5A4A47;--ink-3:#8A7B77;--line:#E5D9C8;--line-soft:#EFE6D7;--font-script:'Allura',cursive;--font-display:'Cormorant Garamond',Georgia,serif;--font-sans:'Hanken Grotesk',sans-serif;font-family:var(--font-sans);background:var(--cream);color:var(--ink)">
 
   <!-- NAV -->
-  <div class="gp-nav" style="background:#580D15;border-bottom:1px solid rgba(253,177,58,.18);position:sticky;">
+  <div class="gp-nav" style="background:#580D15;position:sticky;">
     <a href="https://app.goparallel.nl" class="gp-btn" style="background:rgba(253,177,58,.55);color:var(--gold-soft);border-color:var(--gold);border-width:1.5px;padding:9px 20px;font-size:14px;flex:none;justify-self:start">Platform</a>
     <a href="#top" class="gp-nav-center" style="display:inline-flex">
       <span style="width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none"><img src="uploads/pasted-1784494998198-0.png" alt="Go Parallel" style="width:100%;height:100%;object-fit:cover;display:block"></span>
@@ -100,7 +100,8 @@
   </div>
 
   <!-- HERO -->
-  <div id="top" class="gp-section" style="background:var(--bordeaux-deep);background-image:radial-gradient(120% 90% at 86% -8%, rgba(253,177,58,.16), transparent 52%);padding:80px 48px 88px;color:#fff;scroll-margin-top:64px">
+  <div id="top" class="gp-section" style="position:relative;background:var(--bordeaux-deep);background-image:radial-gradient(120% 90% at 86% -8%, rgba(253,177,58,.16), transparent 52%);padding:80px 48px 88px;color:#fff;scroll-margin-top:64px">
+    <div style="position:absolute;left:0;right:0;top:0;height:64px;background:linear-gradient(to bottom, #580D15, transparent);pointer-events:none"></div>
     <div style="max-width:1080px;margin:0 auto">
       <div style="display:flex;align-items:center;gap:12px"><span style="width:28px;height:2px;background:var(--gold);border-radius:2px"></span><span class="gp-eyebrow" style="color:#FFF1CE">Duale carrièrebegeleiding</span></div>
       <div style="font-family:var(--font-script);font-size:clamp(64px,9vw,120px);line-height:.85;margin-top:14px;color:var(--gold)">Para<span style="color:#FFF1CE">ll</span>el</div>
@@ -397,7 +398,7 @@
   </div>
 
   <!-- CONTACT -->
-  <div id="contact" class="gp-section" style="background:var(--bordeaux-deep);background-image:radial-gradient(110% 90% at 12% 0%, rgba(253,177,58,.12), transparent 55%);padding:80px 48px;scroll-margin-top:64px">
+  <div id="contact" class="gp-section" style="position:relative;background:var(--bordeaux-deep);background-image:radial-gradient(110% 90% at 12% 0%, rgba(253,177,58,.12), transparent 55%);padding:80px 48px;scroll-margin-top:64px">
     <div class="gp-grid2" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
       <div>
         <div style="display:flex;align-items:center;gap:12px"><span style="width:28px;height:2px;background:var(--gold);border-radius:2px"></span><span class="gp-eyebrow" style="color:var(--gold)">Contact</span></div>
@@ -428,10 +429,11 @@
         </div>
       </div>
     </div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:100px;background:linear-gradient(to bottom, transparent, var(--bordeaux-darker));pointer-events:none"></div>
   </div>
 
   <!-- FOOTER -->
-  <div style="background:var(--bordeaux-darker);border-top:1px solid rgba(253,177,58,.18);padding:0 48px">
+  <div style="background:var(--bordeaux-darker);padding:0 48px">
     <div class="gp-footer-inner" style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:76px;padding:16px 0;flex-wrap:wrap">
       <div class="gp-lockup">
         <span style="font-family:var(--font-script);font-size:26px;color:var(--gold);line-height:1">para<span style="color:#FFF1CE">ll</span>el</span>
