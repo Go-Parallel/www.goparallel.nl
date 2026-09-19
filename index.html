@@ -57,6 +57,7 @@
      is de mobiele default; desktop-kolommen komen pas via de min-width
      media query terug. */
   .gp-plat-item{border-left:1px solid rgba(253,177,58,.3);padding-left:20px;}
+  .gp-vw-item{border-left:1px solid rgba(224,146,42,.5);padding-left:20px;}
   #oprichter .gp-grid2{grid-template-columns:1fr;}
   @media (min-width:901px){
     #oprichter .gp-grid2{grid-template-columns:minmax(0,410px) minmax(0,1fr) minmax(0,1fr);}
@@ -121,25 +122,25 @@
       <div style="display:flex;align-items:center;gap:12px"><span style="width:28px;height:2px;background:var(--gold);border-radius:2px"></span><span class="gp-eyebrow" style="color:var(--gold-deep)">Voor wie</span></div>
       <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(26px,3.4vw,32px);line-height:1.2;margin-top:16px">Voor (top)sport-studenten die willen investeren in sport <span style="color: #E0922A; font-style: italic">én</span> studie</h2>
       <p style="font-size:16.5px;line-height:1.6;color:var(--ink-2);max-width:640px;margin-top:16px">Als (top)sport‑student combineer je intensieve trainingen met je studie. <br>Parallel ondersteunt je bij het combineren van beide carrières, waardoor je niet hoeft te kiezen en sport en studie naast elkaar kunnen bestaan.</p>
-      <div class="gp-grid4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px;margin-bottom:0">
-        <div style="background:var(--paper);border:1px solid var(--line-soft);border-radius:20px;padding:26px">
-          <span style="width:44px;height:44px;border-radius:12px;background:var(--gold-wash);color:var(--bordeaux);display:inline-flex;align-items:center;justify-content:center"><svg style="display:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"></path></svg></span>
+      <div class="gp-grid4 gp-vw" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px;margin-bottom:0">
+        <div class="gp-vw-item">
+          <span style="width:44px;height:44px;border-radius:12px;background:var(--paper);color:var(--bordeaux);display:inline-flex;align-items:center;justify-content:center"><svg style="display:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"></path></svg></span>
           <h3 style="font-family:var(--font-display);font-weight:600;font-size:19px;margin-top:16px">De overstap</h3>
 
           <p style="font-size:14px;line-height:1.55;color:var(--ink-2);margin-top:8px">Van het voortgezet onderwijs naar mbo, hbo of wo én voor studenten die daar al studeren.</p>
         </div>
-        <div style="background:var(--paper);border:1px solid var(--line-soft);border-radius:20px;padding:26px">
-          <span style="width:44px;height:44px;border-radius:12px;background:var(--gold-wash);color:var(--bordeaux);display:inline-flex;align-items:center;justify-content:center"><svg style="display:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10"></path><path d="M5 7h14M5 7l-2.5 5a3 3 0 0 0 5 0zM19 7l-2.5 5a3 3 0 0 0 5 0z"></path></svg></span>
+        <div class="gp-vw-item">
+          <span style="width:44px;height:44px;border-radius:12px;background:var(--paper);color:var(--bordeaux);display:inline-flex;align-items:center;justify-content:center"><svg style="display:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10"></path><path d="M5 7h14M5 7l-2.5 5a3 3 0 0 0 5 0zM19 7l-2.5 5a3 3 0 0 0 5 0z"></path></svg></span>
           <h3 style="font-family:var(--font-display);font-weight:600;font-size:19px;margin-top:16px">Balans</h3>
           <p style="font-size:14px;line-height:1.55;color:var(--ink-2);margin-top:8px">Een overzichtelijke weekplanning waarin trainen, wedstrijden en studeren naast elkaar passen.</p>
         </div>
-        <div style="background:var(--paper);border:1px solid var(--line-soft);border-radius:20px;padding:26px">
-          <span style="width:44px;height:44px;border-radius:12px;background:var(--gold-wash);color:var(--bordeaux);display:inline-flex;align-items:center;justify-content:center"><svg style="display:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg></span>
+        <div class="gp-vw-item">
+          <span style="width:44px;height:44px;border-radius:12px;background:var(--paper);color:var(--bordeaux);display:inline-flex;align-items:center;justify-content:center"><svg style="display:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg></span>
           <h3 style="font-family:var(--font-display);font-weight:600;font-size:19px;margin-top:16px">Zelfsturing</h3>
           <p style="font-size:14px;line-height:1.55;color:var(--ink-2);margin-top:8px">Ontwikkel vaardigheden om zelf te leren plannen en bij te sturen wanneer het nodig is.</p>
         </div>
-        <div style="background:var(--paper);border:1px solid var(--line-soft);border-radius:20px;padding:26px">
-          <span style="width:44px;height:44px;border-radius:12px;background:var(--gold-wash);color:var(--bordeaux);display:inline-flex;align-items:center;justify-content:center"><svg style="display:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"></circle><path d="M8.5 12.5 7 21l5-2.5L17 21l-1.5-8.5"></path></svg></span>
+        <div class="gp-vw-item">
+          <span style="width:44px;height:44px;border-radius:12px;background:var(--paper);color:var(--bordeaux);display:inline-flex;align-items:center;justify-content:center"><svg style="display:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"></circle><path d="M8.5 12.5 7 21l5-2.5L17 21l-1.5-8.5"></path></svg></span>
           <h3 style="font-family:var(--font-display);font-weight:600;font-size:19px;margin-top:16px">Ná de topsport</h3>
           <div style="font-size:14px;line-height:1.55;color:var(--ink-2);margin-top:8px"><p><span style="white-space: pre-wrap;">Bewuste keuzes voor je loopbaan, met oog op de voorbereiding voor na je (top)sportcarrière.</span></p><p></p></div>
         </div>
