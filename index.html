@@ -56,6 +56,7 @@
      mobiel toestel bleek te falen (zie git-historie). Basisregel hieronder
      is de mobiele default; desktop-kolommen komen pas via de min-width
      media query terug. */
+  .gp-plat-item{border-left:1px solid rgba(253,177,58,.3);padding-left:20px;}
   #oprichter .gp-grid2{grid-template-columns:1fr;}
   @media (min-width:901px){
     #oprichter .gp-grid2{grid-template-columns:minmax(0,410px) minmax(0,1fr) minmax(0,1fr);}
@@ -68,6 +69,8 @@
     .gp-pijlers{flex-direction:column;height:auto;}
     .gp-pijler{border-left:none !important;border-top:1px solid var(--gold-soft);padding:14px 22px !important;}
     .gp-pijler:first-child{border-top:none;}
+    .gp-plat{grid-template-columns:1fr !important;}
+    .gp-plat-item{border-left:none;padding-left:0;border-top:1px solid rgba(253,177,58,.3);padding-top:16px;}
     .gp-align-spacer{display:none !important;}
   }
   @media (max-width:600px){
@@ -333,16 +336,16 @@
       <div style="display:flex;align-items:center;gap:12px"><span style="width:28px;height:2px;background:var(--gold);border-radius:2px"></span><span class="gp-eyebrow" style="color:var(--gold)">Het begeleidingsplatform</span></div>
       <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(26px,3.4vw,32px);line-height:1.2;margin-top:16px;max-width:720px">Het platform achter elk traject: <span style="font-family:var(--font-script);font-size:1.2em;color:var(--gold);font-weight:400">app. goparallel.nl</span></h2>
       
-      <p style="font-size:16.5px;line-height:1.6;color:rgba(255,255,255,.85);max-width:680px;margin-top:16px">Het platform is de centrale werkplek voor (top)sport-studenten, begeleiders, docenten en sportcoaches.</p><div class="gp-grid4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px">
-        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(253,177,58,.3);border-radius:16px;padding:20px">
+      <p style="font-size:16.5px;line-height:1.6;color:rgba(255,255,255,.85);max-width:680px;margin-top:16px">Het platform is de centrale werkplek voor (top)sport-studenten, begeleiders, docenten en sportcoaches.</p><div class="gp-grid4 gp-plat" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px">
+        <div class="gp-plat-item">
           <div style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--gold)">(top)sport-student</div>
           <p style="font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.75);margin-top:8px">Eigen weekplanning, doelen, taken en gespreksverslagen.</p>
         </div>
-        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(253,177,58,.3);border-radius:16px;padding:20px">
+        <div class="gp-plat-item">
           <div style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--gold)">Begeleiders</div>
           <p style="font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.75);margin-top:8px">Volgen de voortgang van gekoppelde (top)sport-studenten</p>
         </div>
-        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(253,177,58,.3);border-radius:16px;padding:20px">
+        <div class="gp-plat-item">
           <div style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--gold)">Docenten &amp; sportcoaches</div>
           <p style="font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.75);margin-top:8px">Inzicht in de weekplanning van gekoppelde (top)sport-studenten</p>
         </div>
