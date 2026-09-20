@@ -87,6 +87,11 @@
     #contact .gp-field input,#contact .gp-field textarea{padding:10px 12px;font-size:16px;}
     .gp-align-spacer{display:none !important;}
   }
+  @media (min-width:1160px){
+    .gp-footer-inner{display:grid !important;grid-template-columns:1fr auto 1fr;}
+    .gp-footer-meta{display:contents !important;}
+    .gp-footer-meta > span{justify-self:end;text-align:right;}
+  }
   @media (max-width:600px){
     .gp-br-mobile{display:inline;}
     .gp-grid4{grid-template-columns:1fr !important;}
