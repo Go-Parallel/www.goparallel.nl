@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trajecten · GoParallel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Birthstone&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/variant-c.css">
+<style>
+  /* Losse, statische pagina (geen <x-dc>/support.js) — zelfde patroon als
+     privacyverklaring.html: geen canvas-runtime nodig voor tekst die niet
+     interactief bewerkt hoeft te worden. */
+  html{overflow-x:hidden;max-width:100vw;}
+  body{margin:0;font-family:'Hanken Grotesk',sans-serif;}
+  h1,h2,h3,h4,p,ul{margin:0;padding:0;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:#FDB13A;color:#6E0F18;}
+  .gp-btn{font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15px;cursor:pointer;border:1.5px solid transparent;border-radius:999px;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:13px 26px;}
+  .gp-eyebrow{font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;}
+  .gp-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:72px;padding:0 48px;position:sticky;top:0;z-index:40;}
+  .gp-nav-center{position:static;transform:none;grid-column:2;}
+  .gp-nav-right{grid-column:3;}
+  .gp-br-mobile{display:none;}
+  .gp-nav-cta{position:absolute;top:50%;left:max(48px,calc((100% - 1080px)/2));transform:translateY(-50%);display:inline-flex;flex-direction:column;align-items:center;}
+  .gp-cta-spacer{display:flex;align-items:center;gap:12px;height:0;overflow:hidden;visibility:hidden;}
+  .gp-navlinks{display:flex;gap:28px;}
+  .gp-navlinks a{font-size:14.5px;font-weight:500;white-space:nowrap;}
+  .gp-check{list-style:none;display:grid;gap:14px;}
+  .gp-check li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.55;}
+  .gp-check li svg{flex:none;}
+  .gp-field label{font-size:13px;font-weight:600;color:#5A4A47;display:block;margin-bottom:7px;}
+  .gp-field input,.gp-field textarea{font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#2A1A1A;background:#fff;border:1.5px solid #E5D9C8;border-radius:12px;padding:12px 14px;outline:none;width:100%;box-sizing:border-box;}
+  .gp-contact-card{width:100%;max-width:460px;justify-self:center;box-sizing:border-box;}
+  #contact .gp-field label{font-size:12px;margin-bottom:3px;}
+  #contact .gp-field input,#contact .gp-field textarea{padding:6px 10px;font-size:14px;border-radius:10px;}
+  @media (max-width:900px){
+    .gp-navlinks{display:none;}
+    .gp-nav-cta{position:static;transform:none;grid-column:1;justify-self:start;}
+    .gp-cta-spacer{display:none;}
+    .gp-grid2{grid-template-columns:1fr !important;}
+    .gp-contact-card{max-width:none;justify-self:stretch;}
+    .gp-contact-row{gap:24px !important;}
+    #contact .gp-field label{font-size:13px;}
+    #contact .gp-field input,#contact .gp-field textarea{padding:10px 12px;font-size:16px;}
+    .gp-pakket-head{flex-direction:column;align-items:flex-start !important;}
+    .gp-pakket-tarief{text-align:left !important;}
+  }
+  @media (min-width:1160px){
+    .gp-footer-inner{display:grid !important;grid-template-columns:1fr auto 1fr;}
+    .gp-footer-meta{display:contents !important;}
+    .gp-footer-meta > span{justify-self:end;text-align:right;}
+  }
+  @media (max-width:600px){
+    .gp-br-mobile{display:inline;}
+    .gp-nav{padding:0 20px;}
+    .gp-footer-inner{flex-direction:column;justify-content:center;text-align:center;padding:24px 0;gap:8px !important;}
+    .gp-footer-meta{flex-direction:column;gap:6px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div style="--bordeaux:#A30F13;--bordeaux-deep:#6E0F18;--bordeaux-darker:#4E0A11;--gold:#FDB13A;--gold-deep:#E0922A;--gold-soft:#F0D49A;--gold-wash:#FAEFD8;--cream:#F8F2E8;--cream-deep:#F1E8D9;--paper:#FCF9F4;--ink:#2A1A1A;--ink-2:#5A4A47;--ink-3:#8A7B77;--line:#E5D9C8;--line-soft:#EFE6D7;--font-script:'Allura',cursive;--font-display:'Cormorant Garamond',Georgia,serif;--font-sans:'Hanken Grotesk',sans-serif;font-family:var(--font-sans);background:var(--cream-deep);color:var(--ink)">
+
+  <!-- NAV -->
+  <div class="gp-nav" style="background:#580D15;position:sticky;">
+    <div class="gp-nav-cta">
+      <a href="https://app.goparallel.nl" class="gp-btn" style="background:rgba(253,177,58,.55);color:var(--gold-soft);border-color:var(--gold);border-width:1.5px;padding:9px 20px;font-size:14px;flex:none">Platform</a>
+      <div class="gp-cta-spacer" aria-hidden="true"><span style="width:28px;height:2px;flex:none"></span><span class="gp-eyebrow">Duale carrièrebegeleiding</span></div>
+    </div>
+    <a href="index.html" class="gp-nav-center" style="display:inline-flex">
+      <span style="width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none"><img src="uploads/pasted-1784494998198-0.png" alt="GoParallel" style="width:100%;height:100%;object-fit:cover;display:block"></span>
+    </a>
+    <div class="gp-nav-right" style="justify-self:end;display:flex;align-items:center;gap:20px">
+      <nav class="gp-navlinks" style="align-items:center">
+        <a href="index.html" style="color:rgba(255,255,255,.8)">Home</a>
+        <a href="trajecten.html" class="gp-nav-active" aria-current="page" style="color:rgba(255,255,255,.8)">Trajecten</a>
+        <a href="over-mij.html" style="color:rgba(255,255,255,.8)">Over mij</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div id="top" class="gp-section" style="background:var(--bordeaux-deep);background-image:linear-gradient(to bottom, #580D15, transparent 150px), radial-gradient(120% 90% at 86% -8%, rgba(253,177,58,.16), transparent 52%);padding:34px 48px 38px;border-bottom:2px solid var(--gold);color:#fff;scroll-margin-top:64px">
+    <div style="max-width:1080px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:12px"><span style="width:28px;height:2px;background:var(--gold);border-radius:2px"></span><span class="gp-eyebrow" style="color:#FFF1CE">Duale carrièrebegeleiding</span></div>
+      <div style="font-family:var(--font-script);font-size:clamp(64px,9vw,120px);line-height:.85;margin-top:14px;color:var(--gold)"><span style="font-family:'Birthstone',cursive;font-size:1.11em;line-height:0">G</span><span style="margin-left:-.04em;margin-right:.1em">o</span>Para<span style="color:#FFF1CE">ll</span>el</div>
+      <h1 style="font-family:var(--font-display);font-weight:500;font-size:clamp(30px,4.4vw,46px);line-height:1.12;margin-top:-4px;max-width:640px">Sport <i style="color: var(--gold);">én</i> studie,<br class="gp-br-mobile"> parallel begeleid.</h1>
+    </div>
+  </div>
+
+  <div class="gp-blocks">
+
+  <!-- DIENSTEN: INTRO -->
+  <div id="diensten" class="gp-block" style="scroll-margin-top:64px">
+    <div class="gp-crumb"><a href="index.html">Home</a><span>/</span><span aria-current="page">Trajecten</span></div>
+    <div style="display:flex;align-items:center;gap:12px"><span style="width:28px;height:2px;background:var(--gold);border-radius:2px"></span><span class="gp-eyebrow" style="color:var(--gold-deep)">Pakketten</span></div>
+    <h2 style="font-family: var(--font-display); font-weight: 600; font-size: clamp(26px,3.4vw,32px); line-height: 1.2; margin-top: 16px; font-style: normal">Voor elke situatie een <em style="color: #E0922A; font-style: italic">persoonlijk</em> passend traject.</h2>
+    <p style="font-size:16.5px;line-height:1.6;color:var(--ink-2);max-width:920px;margin-top:16px">Van een intensief 1-op-1 begeleidingstraject tot toegang tot het platform met praktische hulpmiddelen: een duale agenda, inzicht in de balans tussen sport, studie en vrije tijd, en de persoonlijke route overzichtelijk op één plek.</p>
+  </div>
+
+  <!-- PAKKET 1 -->
+  <div class="gp-block">
+    <div class="gp-pakket-head" style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div>
+        <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);font-weight:600">Pakket 1</div>
+        <h3 style="font-family:var(--font-display);font-weight:600;font-size:26px;margin-top:8px;color:var(--bordeaux-deep)">Individueel begeleidingstraject</h3>
+      </div>
+      <div class="gp-pakket-tarief" style="text-align:right;flex:none">
+        <div style="font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">Tarief</div>
+        <div style="font-family:var(--font-display);font-size:32px;font-weight:600;color:var(--bordeaux);margin-top:2px">€ 1250,-</div>
+      </div>
+    </div>
+
+    <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-top:28px">Voor de leerling</div>
+    <ul class="gp-check" style="margin-top:12px">
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">12 maanden toegang tot het platform</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Uitgewerkte duale carrièreplanning</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Afstemming met school en sportclub</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">1-op-1 begeleidingstraject van 6 gesprekken met de (top)sport-student</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Ontwikkelen zelfsturingsvaardigheden</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Creëren van lange termijnvisie op loopbaan ná de sport</span></li>
+    </ul>
+
+    <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-top:20px">Voor de school</div>
+    <ul class="gp-check" style="margin-top:12px">
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Intensieve ondersteuning bij complexe casussen</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Versterking van bestaande begeleiding</span></li>
+    </ul>
+
+    <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-top:20px">Voor de sportclub</div>
+    <ul class="gp-check" style="margin-top:12px">
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Inzicht in belasting en planning van de (top)sport-student</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Betere afstemming tussen sport en studie</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Ondersteuning in lange termijn ontwikkeling van (top)sport-studenten</span></li>
+    </ul>
+
+    <div style="margin-top:28px">
+      <span style="font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--bordeaux);color:#fff">Intensiteit · hoog</span>
+    </div>
+  </div>
+
+  <!-- PAKKET 2 -->
+  <div class="gp-block">
+    <div class="gp-pakket-head" style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div>
+        <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);font-weight:600">Pakket 2</div>
+        <h3 style="font-family:var(--font-display);font-weight:600;font-size:26px;margin-top:8px;color:var(--bordeaux-deep)">Start-up traject</h3>
+      </div>
+      <div class="gp-pakket-tarief" style="text-align:right;flex:none">
+        <div style="font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">Tarief</div>
+        <div style="font-family:var(--font-display);font-size:32px;font-weight:600;color:var(--bordeaux);margin-top:2px">€ 580,-</div>
+      </div>
+    </div>
+
+    <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-top:28px">Voor de leerling</div>
+    <ul class="gp-check" style="margin-top:12px">
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">12 maanden toegang tot het platform</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Uitgewerkte duale carrièreplanning</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Afstemming met school en sportclub</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Twee fysieke afspraken (+/- 90 min) voor afstemming met (top)sport-student</span></li>
+    </ul>
+
+    <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-top:20px">Voor de school</div>
+    <ul class="gp-check" style="margin-top:12px">
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Direct toepasbaar binnen bestaande begeleiding</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Versterking van bestaande begeleiding</span></li>
+    </ul>
+
+    <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-top:20px">Voor de sportclub</div>
+    <ul class="gp-check" style="margin-top:12px">
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Inzicht in belasting en planning van de (top)sport-student</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Betere afstemming tussen sport en studie</span></li>
+    </ul>
+
+    <div style="margin-top:28px">
+      <span style="font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--gold);color:var(--bordeaux-deep)">Intensiteit · laag-middel</span>
+    </div>
+  </div>
+
+  <!-- PAKKET 3 -->
+  <div class="gp-block">
+    <div class="gp-pakket-head" style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div>
+        <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);font-weight:600">Pakket 3</div>
+        <h3 style="font-family:var(--font-display);font-weight:600;font-size:26px;margin-top:8px;color:var(--bordeaux-deep)">Online platform</h3>
+      </div>
+      <div class="gp-pakket-tarief" style="text-align:right;flex:none">
+        <div style="font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">Tarief</div>
+        <div style="font-family:var(--font-display);font-size:32px;font-weight:600;color:var(--bordeaux);margin-top:2px">€ 8,99 p.m.</div>
+      </div>
+    </div>
+
+    <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-top:28px">Voor de leerling</div>
+    <ul class="gp-check" style="margin-top:12px">
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">12 maanden toegang tot het platform</span></li>
+    </ul>
+
+    <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-top:20px">Voor de school</div>
+    <ul class="gp-check" style="margin-top:12px">
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Direct toepasbaar binnen bestaande begeleiding</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Versterkt structuur en zelfstandigheid</span></li>
+    </ul>
+
+    <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-top:20px">Voor de sportclub</div>
+    <ul class="gp-check" style="margin-top:12px">
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Inzicht in planning en belasting van de (top)sport-student</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"></path></svg><span style="font-size:14px;color:var(--ink-2)">Ondersteunt communicatie met school en (top)sport-student</span></li>
+    </ul>
+
+    <div style="margin-top:28px">
+      <span style="font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--gold-wash);color:var(--gold-deep)">Intensiteit · laag</span>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="gp-block" style="scroll-margin-top:64px">
+    <div style="display:flex;align-items:center;gap:12px"><span style="width:28px;height:2px;background:var(--gold);border-radius:2px"></span><span class="gp-eyebrow" style="color:var(--gold-deep)">Contact</span></div>
+    <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(26px,3.4vw,32px);line-height:1.2;margin-top:12px;color:var(--ink)">Benieuwd wat&nbsp;<span style="font-family: var(--font-script); font-weight: 400; font-size: 1.2em; color: var(--bordeaux);"><span style="font-family:'Birthstone',cursive;font-size:1.11em;line-height:0">G</span><span style="margin-left:-.04em;margin-right:.1em">o</span>Para<span style="color: var(--gold-deep);">ll</span>el</span>&nbsp; voor jullie kan betekenen?</h2>
+    <div class="gp-grid2 gp-contact-row" style="display:grid;grid-template-columns:minmax(0,392px) minmax(0,1fr);gap:0;align-items:stretch;margin-top:14px">
+      <div style="display:flex;flex-direction:column;justify-content:space-between">
+        <p style="font-size:16px;line-height:1.6;color:var(--ink-2);margin-top:0;max-width:420px">In een vrijblijvend kennismakingsgesprek kijken we hoe deze aanpak aansluit op de huidige begeleiding.</p>
+        <ul class="gp-check" style="margin-top:14px;gap:8px">
+
+          <li style="color:var(--ink)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"></path><path d="m3 6 9 7 9-7"></path><rect x="3" y="5" width="18" height="14" rx="2"></rect></svg>info@goparallel.nl</li>
+          <li style="color:var(--ink)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.65 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.27a2 2 0 0 1 2.11-.45c.86.31 1.75.53 2.65.65A2 2 0 0 1 22 16.92Z"></path></svg>+31 6 8335 8771</li>
+        </ul>
+        <div style="display:flex;gap:12px;margin-top:16px">
+          <a href="#" style="width:38px;height:38px;border-radius:10px;background:rgba(163,15,19,.08);border:1px solid rgba(163,15,19,.25);display:inline-flex;align-items:center;justify-content:center;color:var(--bordeaux)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle><path d="M8 9h4v2a4 4 0 0 1 4-2c3 0 4 2 4 5v7h-4v-6c0-1.5-.5-2.5-2-2.5S10 12 10 13.5V21H8Z"></path></svg></a>
+          <a href="#" style="width:38px;height:38px;border-radius:10px;background:rgba(163,15,19,.08);border:1px solid rgba(163,15,19,.25);display:inline-flex;align-items:center;justify-content:center;color:var(--bordeaux)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg></a>
+        </div>
+      </div>
+      <div class="gp-contact-card" style="background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:16px 18px">
+        <div>
+          <div class="gp-grid2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div class="gp-field"><label>Naam</label><input type="text" placeholder="Voor- en achternaam"></div>
+            <div class="gp-field"><label>E-mail</label><input type="email" placeholder="naam@voorbeeld.nl"></div>
+          </div>
+          <div class="gp-field" style="margin-top:8px"><label>Organisatie (school/sportclub, optioneel)</label><input type="text" placeholder="Naam organisatie"></div>
+          <div class="gp-field" style="margin-top:8px"><label>Bericht</label><textarea rows="2" placeholder="Waar kunnen we je mee helpen?"></textarea></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap">
+            <button type="button" class="gp-btn" style="background:var(--bordeaux-deep);color:var(--gold);border:1.5px solid var(--gold);padding:14px 26px;font-size:15px;min-height:44px;box-sizing:border-box">Versturen</button>
+            <span style="font-size:12.5px;color:var(--ink-3)">We reageren binnen twee werkdagen.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:var(--bordeaux-darker);padding:0 48px;border-top:1px solid rgba(253,177,58,.22)">
+    <div class="gp-footer-inner" style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:0;padding:12px 0;flex-wrap:wrap">
+      <div class="gp-lockup" style="display:inline-flex;align-items:center;gap:12px">
+        <span style="font-family:var(--font-script);font-size:26px;color:var(--gold);line-height:1"><span style="font-family:'Birthstone',cursive;font-size:1.11em;line-height:0">G</span><span style="margin-left:-.04em;margin-right:.1em">o</span>Para<span style="color:#FFF1CE">ll</span>el</span>
+        <span style="width:1px;height:22px;background:rgba(253,177,58,.35)"></span>
+        <span style="font-family:var(--font-display);font-style:italic;font-size:14px;color:rgba(255,255,255,.75)">Sport <b style="color:var(--gold);font-style:normal;font-weight:600">én</b> studie, parallel begeleid.</span>
+      </div>
+      <div class="gp-footer-meta" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+        <a href="privacyverklaring.html" style="font-size:13px;color:rgba(255,255,255,.75);text-decoration:underline">Privacyverklaring</a>
+        <span style="font-size:13px;color:rgba(255,255,255,.55)">© 2026 GoParallel — Remke Hekers · Duale carrièrebegeleiding</span>
+      </div>
+    </div>
+  </div>
+
+<div id="gp-cookie-banner" style="position:fixed;left:0;right:0;bottom:0;z-index:1000;display:none;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;background:#4E0A11;padding:16px 24px;font-family:'Hanken Grotesk',sans-serif">
+  <p style="max-width:640px;text-align:center;font-size:13.5px;line-height:1.5;color:#F0D49A;margin:0">Deze website gebruikt alleen technisch noodzakelijke functies — geen tracking- of analysecookies.</p>
+  <button type="button" id="gp-cookie-ok" style="flex:none;border-radius:999px;border:none;background:#FDB13A;color:#2A1A1A;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:13px;padding:9px 18px;cursor:pointer">Begrepen</button>
+</div>
+<script>
+  (function () {
+    var KEY = "gp-cookie-notice-dismissed";
+    var banner = document.getElementById("gp-cookie-banner");
+    try {
+      if (localStorage.getItem(KEY) !== "1") banner.style.display = "flex";
+    } catch (e) {
+      banner.style.display = "flex";
+    }
+    document.addEventListener("click", function (e) {
+      if (e.target && e.target.id === "gp-cookie-ok") {
+        banner.style.display = "none";
+        try {
+          localStorage.setItem(KEY, "1");
+        } catch (e) {}
+      }
+    });
+  })();
+</script>
+</body>
+</html>
