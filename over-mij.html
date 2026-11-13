@@ -32,7 +32,8 @@
   .gp-om-intro{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:40px;align-items:center;}
   .gp-om-portrait{width:100%;aspect-ratio:4/5;border-radius:20px;overflow:hidden;}
   .gp-om-portrait img{width:100%;height:100%;object-fit:cover;display:block;}
-  .gp-pe-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:32px;align-items:start;}
+  .gp-pe-combo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:48px;align-items:center;}
+  .gp-pe-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:28px;align-items:center;}
   .gp-pe-photo{width:100%;aspect-ratio:4/3;border-radius:20px;overflow:hidden;flex:none;}
   .gp-pe-photo img{width:100%;height:100%;object-fit:cover;display:block;}
   @media (max-width:900px){
@@ -40,6 +41,7 @@
     .gp-nav-cta{position:static;transform:none;grid-column:1;justify-self:start;}
     .gp-cta-spacer{display:none;}
     .gp-om-intro{grid-template-columns:1fr;}
+    .gp-pe-combo{grid-template-columns:1fr;gap:28px;}
     .gp-pe-row{grid-template-columns:1fr;}
     .gp-pe-photo{order:-1;max-width:380px;margin:0 auto;}
   }
@@ -113,22 +115,24 @@
     </div>
   </div>
 
-  <!-- PRAKTIJKERVARING -->
+  <!-- PRAKTIJKERVARING + MISSIE -->
   <div class="gp-block">
-    <div style="font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--bordeaux-deep)">Topsport &amp; praktijk</div>
-    <div class="gp-pe-row" style="margin-top:10px">
-      <p style="font-size:15.5px;line-height:1.65;color:var(--ink-2)">Naast mijn academische achtergrond heb ik zelf ervaren wat het vraagt om (top)sport te combineren met andere levensdomeinen. In Antwerpen speelde ik handbal op het hoogste niveau bij DHW United, waarna ik bij terugkomst in Nederland speelde in de eerste divisie bij MEOS in Nederweert. Deze ervaringen stellen mij in staat om mijn theoretische kennis te verbinden met de praktijk en mij goed te verplaatsen in de leefwereld van (top)sporters.</p>
-      <div class="gp-pe-photo">
-        <img src="uploads/remke-handbal-praktijkervaring.jpg" alt="Remke Hekers tijdens een handbalwedstrijd">
+    <div class="gp-pe-combo">
+      <div>
+        <div style="font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--bordeaux-deep)">Topsport &amp; praktijk</div>
+        <div class="gp-pe-row" style="margin-top:10px">
+          <p style="font-size:15.5px;line-height:1.65;color:var(--ink-2)">Naast mijn academische achtergrond heb ik zelf ervaren wat het vraagt om (top)sport te combineren met andere levensdomeinen. In Antwerpen speelde ik handbal op het hoogste niveau bij DHW United, waarna ik bij terugkomst in Nederland speelde in de eerste divisie bij MEOS in Nederweert. Deze ervaringen stellen mij in staat om mijn theoretische kennis te verbinden met de praktijk en mij goed te verplaatsen in de leefwereld van (top)sporters.</p>
+          <div class="gp-pe-photo">
+            <img src="uploads/remke-handbal-praktijkervaring.jpg" alt="Remke Hekers tijdens een handbalwedstrijd">
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:40px;height:2px;background:var(--gold);margin:0 auto 24px;border-radius:2px"></div>
+        <p style="font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(17px,1.6vw,20px);line-height:1.55;color:var(--bordeaux-deep);margin:0">Mijn interesse in duale carrièrebegeleiding is in de afgelopen tien jaar uitgegroeid tot een duidelijke missie. Vanuit mijn academische achtergrond en praktijkervaring binnen het MBO, HBO, WO en de topsport breng ik alles samen in mijn eigen onderneming: <span style="font-family:var(--font-script);font-size:1.15em;font-weight:400;font-style:normal;color:var(--bordeaux);line-height:1;vertical-align:middle"><span style="font-family:'Birthstone',cursive;font-size:1.11em;line-height:0">G</span><span style="margin-left:-.04em;margin-right:.1em">o</span>Para<span style="color:var(--gold-deep)">ll</span>el</span></p>
+        <div style="width:40px;height:2px;background:var(--gold);margin:24px auto 0;border-radius:2px"></div>
       </div>
     </div>
-  </div>
-
-  <!-- MISSIE -->
-  <div class="gp-block" style="text-align:center">
-    <div style="width:40px;height:2px;background:var(--gold);margin:0 auto 28px;border-radius:2px"></div>
-    <p style="font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(19px,2.3vw,25px);line-height:1.6;color:var(--bordeaux-deep);max-width:760px;margin:0 auto">Mijn interesse in duale carrièrebegeleiding is in de afgelopen tien jaar uitgegroeid tot een duidelijke missie. Vanuit mijn academische achtergrond en praktijkervaring binnen het MBO, HBO, WO en de topsport breng ik alles samen in mijn eigen onderneming: <span style="font-family:var(--font-script);font-size:1.15em;font-weight:400;font-style:normal;color:var(--bordeaux);line-height:1;vertical-align:middle"><span style="font-family:'Birthstone',cursive;font-size:1.11em;line-height:0">G</span><span style="margin-left:-.04em;margin-right:.1em">o</span>Para<span style="color:var(--gold-deep)">ll</span>el</span></p>
-    <div style="width:40px;height:2px;background:var(--gold);margin:28px auto 0;border-radius:2px"></div>
   </div>
 
   </div>
