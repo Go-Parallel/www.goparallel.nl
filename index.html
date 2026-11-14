@@ -108,8 +108,14 @@
         <a href="trajecten.html" style="color:rgba(255,255,255,.8)">Trajecten</a>
         <a href="over-mij.html" style="color:rgba(255,255,255,.8)">Over mij</a>
       </nav>
-      <a href="mailto:info@goparallel.nl" class="gp-btn" style="background:transparent;color:rgba(255,241,206,.85);border-color:rgba(253,177,58,.5);border-width:1.5px;padding:9px 20px;font-size:14px;flex:none">Contact</a>
+      <a href="contact.html" class="gp-btn" style="background:transparent;color:rgba(255,241,206,.85);border-color:rgba(253,177,58,.5);border-width:1.5px;padding:9px 20px;font-size:14px;flex:none">Contact</a>
+      <button type="button" id="gp-menu-toggle" class="gp-nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="gp-mobile-menu"><span></span><span></span><span></span></button>
     </div>
+  </div>
+  <div id="gp-mobile-menu" class="gp-mobile-menu">
+    <a href="index.html" class="gp-nav-active" aria-current="page">Home</a>
+    <a href="trajecten.html">Trajecten</a>
+    <a href="over-mij.html">Over mij</a>
   </div>
 
   <!-- HERO -->
@@ -300,6 +306,33 @@
         try {
           localStorage.setItem(KEY, "1");
         } catch (e) {}
+      }
+    });
+  })();
+</script>
+<script>
+  // Mobiel klikmenu. Gedelegeerd op document (niet op de knop/het paneel
+  // zelf): support.js vervangt de <x-dc>-inhoud door een React-boom zodra
+  // React/ReactDOM van het CDN geladen zijn, waardoor een listener die
+  // rechtstreeks aan de knop hangt na die wissel niet meer vuurt. Een
+  // listener op document overleeft die wissel, en elke klik zoekt de
+  // op dat moment actuele knop/paneel opnieuw op.
+  (function () {
+    document.addEventListener("click", function (e) {
+      var toggle = e.target.closest && e.target.closest("#gp-menu-toggle");
+      if (toggle) {
+        var menu = document.getElementById("gp-mobile-menu");
+        if (!menu) return;
+        var open = menu.classList.toggle("gp-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        return;
+      }
+      var link = e.target.closest && e.target.closest("#gp-mobile-menu a");
+      if (link) {
+        var menu2 = document.getElementById("gp-mobile-menu");
+        var btn2 = document.getElementById("gp-menu-toggle");
+        if (menu2) menu2.classList.remove("gp-open");
+        if (btn2) btn2.setAttribute("aria-expanded", "false");
       }
     });
   })();

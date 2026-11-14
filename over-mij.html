@@ -75,8 +75,14 @@
         <a href="trajecten.html" style="color:rgba(255,255,255,.8)">Trajecten</a>
         <a href="over-mij.html" class="gp-nav-active" aria-current="page" style="color:rgba(255,255,255,.8)">Over mij</a>
       </nav>
-      <a href="mailto:info@goparallel.nl" class="gp-btn" style="background:transparent;color:rgba(255,241,206,.85);border-color:rgba(253,177,58,.5);border-width:1.5px;padding:9px 20px;font-size:14px;flex:none">Contact</a>
+      <a href="contact.html" class="gp-btn" style="background:transparent;color:rgba(255,241,206,.85);border-color:rgba(253,177,58,.5);border-width:1.5px;padding:9px 20px;font-size:14px;flex:none">Contact</a>
+      <button type="button" id="gp-menu-toggle" class="gp-nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="gp-mobile-menu"><span></span><span></span><span></span></button>
     </div>
+  </div>
+  <div id="gp-mobile-menu" class="gp-mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="trajecten.html">Trajecten</a>
+    <a href="over-mij.html" class="gp-nav-active" aria-current="page">Over mij</a>
   </div>
 
   <!-- HERO -->
@@ -160,6 +166,23 @@
         try {
           localStorage.setItem(KEY, "1");
         } catch (e) {}
+      }
+    });
+  })();
+</script>
+<script>
+  (function () {
+    var btn = document.getElementById("gp-menu-toggle");
+    var menu = document.getElementById("gp-mobile-menu");
+    if (!btn || !menu) return;
+    btn.addEventListener("click", function () {
+      var open = menu.classList.toggle("gp-open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    menu.addEventListener("click", function (e) {
+      if (e.target && e.target.tagName === "A") {
+        menu.classList.remove("gp-open");
+        btn.setAttribute("aria-expanded", "false");
       }
     });
   })();

@@ -37,6 +37,51 @@
   padding-bottom:4px;
 }
 
+/* Mobiel klikmenu: hamburger-knop + uitklappaneel onder de menubalk. */
+.gp-nav-toggle{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:30px;
+  height:30px;
+  padding:0;
+  background:none;
+  border:none;
+  cursor:pointer;
+  flex:none;
+}
+.gp-nav-toggle span{
+  display:block;
+  width:100%;
+  height:2px;
+  background:#FFF1CE;
+  border-radius:2px;
+}
+.gp-mobile-menu{
+  display:none;
+  flex-direction:column;
+  background:#580D15;
+  border-bottom:2px solid var(--gold);
+  position:sticky;
+  top:72px;
+  z-index:39;
+}
+.gp-mobile-menu.gp-open{display:flex;}
+.gp-mobile-menu a{
+  padding:15px 24px;
+  font-size:15px;
+  font-weight:500;
+  color:rgba(255,255,255,.85);
+  border-top:1px solid rgba(253,177,58,.15);
+}
+.gp-mobile-menu a:first-child{border-top:none;}
+.gp-mobile-menu a.gp-nav-active{color:var(--gold);}
+
 @media (max-width:900px){
   .gp-block{padding:clamp(28px,8vw,48px) 20px;}
+  .gp-nav-toggle{display:flex;}
+}
+@media (min-width:901px){
+  .gp-mobile-menu{display:none !important;}
 }
