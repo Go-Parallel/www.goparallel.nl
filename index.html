@@ -89,20 +89,27 @@
     .gp-footer-meta{flex-direction:column;gap:6px;text-align:center;}
   }
 
-  /* "In één week" — duale weekplanning met voorbeeldschema. */
-  .gp-week-day{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);text-align:center;padding-bottom:4px;}
-  .gp-week-cell{font-size:10.5px;line-height:1.3;font-weight:600;border-radius:7px;padding:8px 5px;text-align:center;min-height:38px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;}
-  .gp-week-studie{background:#1E3A5F;color:#fff;}
-  .gp-week-training{background:var(--gold);color:var(--ink);}
-  .gp-week-rust{background:#2E9E6B;color:#fff;}
-  .gp-week-legend{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink-2);}
-  .gp-week-legend i{width:9px;height:9px;border-radius:3px;display:inline-block;flex:none;}
+  /* "In één week" — probleemsectie met diagonale split en voorbeeldweek. */
+  .gp-probleem{position:relative;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:0;align-items:stretch;padding:0;max-width:1180px;margin:0 auto;width:100%;box-sizing:border-box;background:var(--cream-deep);border:1.5px solid var(--gold);}
+  .gp-probleem-l{background:#AD6227;clip-path:polygon(0 0,100% 0,88% 100%,0 100%);padding:clamp(36px,6vw,72px) clamp(20px,5vw,64px);display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;}
+  .gp-probleem-l h2{margin:0;font-family:var(--font-display);font-weight:500;color:#FFD27A;font-size:clamp(26px,3vw,36px);line-height:1.2;}
+  .gp-probleem-l p{margin:40px 0 0;font-size:18px;line-height:1.5;color:#fff;max-width:520px;}
+  .gp-probleem-r{padding:clamp(28px,5vw,56px) clamp(20px,4vw,48px);display:flex;align-items:center;box-sizing:border-box;}
+  .gp-week{margin:0;width:100%;background:#FBE3B0;border:1px solid #E9C27A;border-radius:14px;padding:22px;box-sizing:border-box;}
+  .gp-week figcaption{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;padding-bottom:14px;margin-bottom:20px;border-bottom:1px solid #E9C27A;}
+  .gp-week figcaption strong{font-family:var(--font-display);font-weight:600;font-size:34px;line-height:1.1;color:var(--bordeaux-darker);}
+  .gp-week figcaption span{font-size:14px;color:var(--ink-2);}
+  .gp-week-day{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);text-align:center;}
+  .gp-week-cell{font-size:12.5px;line-height:1.2;font-weight:600;border-radius:7px;padding:6px 4px;text-align:center;min-height:50px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;}
+  .gp-week-studie{background:#1F4E5A;color:#fff;}
+  .gp-week-training{background:#5A0E16;color:#fff;}
+  .gp-week-rust{background:#E8853F;color:var(--ink);}
+  .gp-week-legend-row{display:flex;gap:8px 18px;margin-top:16px;flex-wrap:wrap;}
+  .gp-week-legend{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);}
+  .gp-week-legend i{width:10px;height:10px;border-radius:3px;display:inline-block;flex:none;}
   @media (max-width:900px){
-    .gp-duaal{grid-template-columns:1fr !important;}
-  }
-  @media (max-width:420px){
-    .gp-week-cell{font-size:9.5px;padding:7px 3px;min-height:34px;}
-    .gp-week-day{font-size:10px;}
+    .gp-probleem-l{clip-path:none;}
+    .gp-br-desk{display:none;}
   }
 </style>
 </helmet>
@@ -148,18 +155,15 @@
   <div class="gp-blocks">
 
   <!-- IN ÉÉN WEEK -->
-  <div class="gp-block">
-    <div class="gp-duaal" style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center">
-      <div>
-        <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(28px,3.6vw,44px);line-height:1.2;color:var(--ink);max-width:560px">Vier trainingen, twee tentamens en een uitwedstrijd — in één week.</h2>
-        <p style="font-size:16.5px;line-height:1.6;color:var(--ink-2);max-width:480px;margin-top:20px">Zo ziet de agenda van veel (top)sport-studenten eruit. Ik help je daar één planning van te maken, samen met je school en je sportclub, zodat je niet hoeft te kiezen.</p>
-      </div>
-      <div class="gp-week-card" style="background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-sizing:border-box">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap">
-          <span style="font-family:var(--font-display);font-weight:600;font-size:17px;color:var(--ink)">Voorbeeldweek</span>
-          <span style="font-size:11.5px;color:var(--ink-3)">zo ziet een duale planning eruit</span>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:16px">
+  <section class="gp-probleem">
+    <div class="gp-probleem-l">
+      <h2>Vier trainingen, twee tentamens<br class="gp-br-desk"> en een uitwedstrijd in één week.</h2>
+      <p>Zo ziet de agenda van veel (top)sport-studenten eruit. Ik help je daar één planning van te maken, samen met je school en je sportclub, zodat je niet hoeft te kiezen.</p>
+    </div>
+    <div class="gp-probleem-r">
+      <figure class="gp-week">
+        <figcaption><strong>Voorbeeldweek</strong><span>zo ziet een duale planning eruit</span></figcaption>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px">
           <div class="gp-week-day">Ma</div>
           <div class="gp-week-day">Di</div>
           <div class="gp-week-day">Wo</div>
@@ -184,14 +188,14 @@
           <div class="gp-week-cell gp-week-training">Training</div>
           <div class="gp-week-cell gp-week-training">Wedstrijd</div>
         </div>
-        <div style="display:flex;gap:16px;margin-top:14px;flex-wrap:wrap">
-          <span class="gp-week-legend"><i style="background:#1E3A5F"></i>Studie</span>
-          <span class="gp-week-legend"><i style="background:var(--gold)"></i>Training en wedstrijd</span>
-          <span class="gp-week-legend"><i style="background:#2E9E6B"></i>Vrij en herstel</span>
+        <div class="gp-week-legend-row">
+          <span class="gp-week-legend"><i class="gp-week-studie"></i>Studie</span>
+          <span class="gp-week-legend"><i class="gp-week-training"></i>Training en wedstrijd</span>
+          <span class="gp-week-legend"><i class="gp-week-rust"></i>Vrij en herstel</span>
         </div>
-      </div>
+      </figure>
     </div>
-  </div>
+  </section>
 
   <!-- VOOR WIE -->
   <div class="gp-block">
