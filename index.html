@@ -113,6 +113,29 @@
     .gp-probleem-l{clip-path:none;}
     .gp-br-desk{display:none;}
   }
+
+  /* "Voor wie" — twee routes (Parallel Personal / Parallel Program). */
+  .gp-vw-routes{margin-top:48px;border-top:1px solid var(--line);padding-top:40px;}
+  .gp-vw-intro{font-family:'Hanken Grotesk',sans-serif;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:700px;}
+  .gp-vw-tabs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
+  .gp-vw-tab{font:inherit;text-align:left;cursor:pointer;display:block;width:100%;padding:22px 26px;min-height:44px;box-sizing:border-box;border-radius:0;background:#FAEFD8;border:1px solid #DCC9A6;border-bottom:3px solid var(--bordeaux-deep);}
+  .gp-vw-tab small{display:block;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--bordeaux);}
+  .gp-vw-tab strong{display:block;font-family:var(--font-display);font-weight:600;font-size:30px;line-height:1.1;color:var(--ink);margin-top:8px;}
+  .gp-vw-tab span{display:block;font-size:14.5px;line-height:1.5;color:var(--ink-2);margin-top:8px;}
+  .gp-vw-tab[aria-selected="true"]{background:var(--bordeaux-deep);border-color:var(--bordeaux-deep);border-bottom-color:var(--gold);}
+  .gp-vw-tab[aria-selected="true"] small{color:var(--gold-soft);}
+  .gp-vw-tab[aria-selected="true"] strong{color:#fff;}
+  .gp-vw-tab[aria-selected="true"] span{color:rgba(255,255,255,.85);}
+  .gp-vw-tab:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+  .gp-vw-panel{margin-top:28px;}
+  .gp-vw-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px;}
+  .gp-vw-card{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--gold);padding:22px 20px;box-sizing:border-box;}
+  .gp-vw-program .gp-vw-card{border-top-color:var(--bordeaux-deep);}
+  .gp-vw-card strong{display:block;font-family:var(--font-display);font-weight:600;font-size:21px;line-height:1.2;color:var(--ink);}
+  .gp-vw-card span{display:block;font-size:14.5px;line-height:1.5;color:var(--ink-2);margin-top:8px;}
+  @media (max-width:700px){
+    .gp-vw-tabs{grid-template-columns:1fr;}
+  }
 </style>
 </helmet>
 
@@ -182,6 +205,38 @@
         <span style="width:44px;height:44px;border-radius:12px;background:var(--cream);color:var(--bordeaux);display:inline-flex;align-items:center;justify-content:center"><svg style="display:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"></circle><path d="M8.5 12.5 7 21l5-2.5L17 21l-1.5-8.5"></path></svg></span>
         <h3 style="font-family:var(--font-display);font-weight:600;font-size:19px;margin-top:16px">Ná de topsport</h3>
         <div style="font-size:14px;line-height:1.55;color:var(--ink-2);margin-top:8px"><p><span style="white-space: pre-wrap;">Bewuste keuzes voor je loopbaan, met oog op de voorbereiding voor na je (top)sportcarrière.</span></p><p></p></div>
+      </div>
+    </div>
+
+    <div class="gp-vw-routes">
+      <p class="gp-vw-intro">GoParallel werkt via twee routes: rechtstreeks met de sporter en zijn ouders, of via de school, bond of club waar de sporter traint en studeert.</p>
+      <div class="gp-vw-tabs" role="tablist" aria-label="Route">
+        <button type="button" class="gp-vw-tab" role="tab" id="vw-tab-personal" aria-controls="vw-panel-personal" aria-selected="true">
+          <small>Voor sporters en ouders</small><strong>Parallel Personal</strong><span>Talenten van ongeveer 14 tot 23 jaar die op een kantelpunt staan.</span>
+        </button>
+        <button type="button" class="gp-vw-tab" role="tab" id="vw-tab-program" aria-controls="vw-panel-program" aria-selected="false" tabindex="-1">
+          <small>Voor scholen, bonden en clubs</small><strong>Parallel Program</strong><span>Organisaties die talentvolle sporters begeleiden, ook bij selectie en stoppen.</span>
+        </button>
+      </div>
+
+      <div class="gp-vw-panel gp-vw-personal" role="tabpanel" id="vw-panel-personal" aria-labelledby="vw-tab-personal">
+        <div class="gp-vw-cards">
+          <div class="gp-vw-card"><strong>Op een kantelpunt</strong><span>Je traint nog volop, maar vraagt je steeds vaker af waar dit naartoe gaat. Bij mij mag je hardop nadenken over je volgende stap, zonder dat je coach of selectie meekijkt.</span></div>
+          <div class="gp-vw-card"><strong>Na een deselectie</strong><span>Eén bericht en je hoort er niet meer bij. Samen geven we je teleurstelling een plek en kijken we vol vertrouwen naar je volgende stap.</span></div>
+          <div class="gp-vw-card"><strong>Net gestopt</strong><span>Eerst voelt stoppen als vrijheid, maar al snel komt de twijfel: was dit wel de juiste keuze? We bouwen samen een nieuw weekritme en kijken naar studie en werk.</span></div>
+          <div class="gp-vw-card"><strong>Geblesseerd</strong><span>Je staat al maanden aan de kant en weet niet of je terugkomt. We maken een plan voor je herstel én een plan B, zodat je niet alles op één kaart zet.</span></div>
+          <div class="gp-vw-card"><strong>All-in</strong><span>Topsportschool, intern wonen, een vakkenpakket rond je sport. Juist dan is het slim om te weten wat je doet als het anders loopt.</span></div>
+        </div>
+      </div>
+
+      <div class="gp-vw-panel gp-vw-program" role="tabpanel" id="vw-panel-program" aria-labelledby="vw-tab-program">
+        <div class="gp-vw-cards">
+          <div class="gp-vw-card"><strong>Topsport Talentscholen</strong><span>Voor leerlingen van 12 tot 18 jaar met een topsportregeling. Ik help met de planning, en met een goede route als een leerling stopt.</span></div>
+          <div class="gp-vw-card"><strong>Talentprogramma&rsquo;s van bonden</strong><span>Selecteren hoort erbij, de nazorg vaak niet. Ik begeleid talenten van CTO&rsquo;s, RTC&rsquo;s en jeugdselecties rond selectiemomenten en vang ze op na een deselectie.</span></div>
+          <div class="gp-vw-card"><strong>Voetbal- en sportacademies</strong><span>Spelers die jong intern wonen, leven vaak helemaal voor hun sport. Ik help ze om daarnaast ook een plan B op te bouwen.</span></div>
+          <div class="gp-vw-card"><strong>Mbo, hbo en wo met een topsportregeling</strong><span>Bij de overstap naar een studie haken veel sporters af. Ik help studenten van 16 tot 23 jaar om sport en studie allebei vol te houden.</span></div>
+          <div class="gp-vw-card"><strong>Verenigingen met selectieteams</strong><span>Voor clubs die hun selectiespelers willen helpen met de balans tussen trainen, wedstrijden en school.</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -407,6 +462,74 @@
         if (menu2) menu2.classList.remove("gp-open");
         if (btn2) btn2.setAttribute("aria-expanded", "false");
       }
+    });
+  })();
+</script>
+<script>
+  // "Voor wie"-routetabs (Parallel Personal/Program). Zelfde reden als het
+  // mobiele menu hierboven: geen gecachte node-referenties en geen listener
+  // rechtstreeks op een knop, want support.js vervangt het hele <x-dc>-
+  // element op enig moment eenmalig door een nieuw #dc-root-element met
+  // dezelfde (getemplate) inhoud. Daarom via document gedelegeerd, en de
+  // standaardselectie opnieuw toegepast zodra #dc-root verschijnt.
+  (function () {
+    var userInteracted = false;
+    function applySelection(tab) {
+      var tabs = [].slice.call(document.querySelectorAll(".gp-vw-tab"));
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", on);
+        t.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      });
+    }
+    function applyDefault() {
+      if (userInteracted) return;
+      var tabs = [].slice.call(document.querySelectorAll(".gp-vw-tab"));
+      if (!tabs.length) return;
+      var startId = location.hash === "#voor-wie-program" ? "vw-tab-program" : "vw-tab-personal";
+      var start = document.getElementById(startId) || tabs[0];
+      applySelection(start);
+    }
+
+    applyDefault();
+
+    // Hydratatie vervangt de knopen in stappen, en op een onvoorspelbaar
+    // moment daarna zet de runtime het hidden-attribuut op het niet-
+    // geselecteerde paneel blijkbaar zelf nog eens terug (geen childList-
+    // mutatie op body, dus een MutationObserver ziet dat moment niet).
+    // Daarom de standaardselectie een tijdlang periodiek opnieuw afdwingen
+    // — idempotent, en alleen zolang de bezoeker nog niet zelf heeft
+    // geklikt/genavigeerd.
+    var pollStart = Date.now();
+    var poll = setInterval(function () {
+      if (userInteracted || Date.now() - pollStart > 10000) {
+        clearInterval(poll);
+        return;
+      }
+      applyDefault();
+    }, 200);
+
+    document.addEventListener("click", function (e) {
+      var tab = e.target.closest && e.target.closest(".gp-vw-tab");
+      if (tab) {
+        userInteracted = true;
+        applySelection(tab);
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      var current = document.activeElement && document.activeElement.closest && document.activeElement.closest(".gp-vw-tab");
+      if (!current) return;
+      var tabs = [].slice.call(document.querySelectorAll(".gp-vw-tab"));
+      var i = tabs.indexOf(current);
+      if (i === -1) return;
+      e.preventDefault();
+      userInteracted = true;
+      var next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      applySelection(next);
+      next.focus();
     });
   })();
 </script>
