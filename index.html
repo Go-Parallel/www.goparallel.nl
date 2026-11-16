@@ -86,7 +86,7 @@
     .gp-grid4{grid-template-columns:1fr !important;}
     .gp-nav{padding:0 20px;}
     .gp-section{padding-left:24px !important;padding-right:24px !important;}
-    #top{min-height:220px !important;}
+    #top{min-height:170px !important;}
     .gp-footer-inner{flex-direction:column;justify-content:center;text-align:center;padding:24px 0;gap:8px !important;}
     .gp-footer-meta{flex-direction:column;gap:6px;text-align:center;}
   }
@@ -142,6 +142,9 @@
     .gp-vw-tab span{display:none;}
     .gp-vw-panel{padding:16px;}
   }
+
+  #gp-eyebrow-sticky{background-image:linear-gradient(#580D15,#580D15 60%,rgba(88,13,21,0));border-bottom:1px solid rgba(253,177,58,0);transition:border-color .6s ease;}
+  #gp-eyebrow-sticky.is-past-hero{background-image:none;background-color:#580D15;border-color:rgba(253,177,58,.18);}
 </style>
 </helmet>
 
@@ -173,8 +176,8 @@
   </div>
 
   <!-- HERO -->
-  <div id="top" class="gp-section" style="background-color:#6E0F18;background-image:linear-gradient(#580D15,transparent 220px),radial-gradient(70% 90% at 50% 110%,rgba(253,177,58,0.18),transparent 60%);min-height:280px;box-sizing:border-box;padding:clamp(32px,5vw,48px) 24px;border-bottom:2px solid var(--gold);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;scroll-margin-top:64px">
-    <div style="display:flex;align-items:center;justify-content:center;gap:12px">
+  <div id="top" class="gp-section" style="background-color:#6E0F18;background-image:linear-gradient(#580D15,transparent 220px),radial-gradient(70% 90% at 50% 110%,rgba(253,177,58,0.18),transparent 60%);min-height:170px;box-sizing:border-box;padding:clamp(18px,3.4vw,28px) 24px;border-bottom:2px solid var(--gold);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;scroll-margin-top:64px">
+    <div id="gp-eyebrow-sticky" style="position:fixed;top:72px;left:0;right:0;z-index:39;display:flex;align-items:center;justify-content:center;gap:12px;padding:12px 24px 18px;box-sizing:border-box">
       <span style="width:36px;height:1px;background:var(--gold)"></span>
       <span class="gp-eyebrow" style="font-size:11px;letter-spacing:0.22em;color:#FFF1CE">Duale carrièrebegeleiding</span>
       <span style="width:36px;height:1px;background:var(--gold)"></span>
@@ -473,6 +476,34 @@
         if (btn2) btn2.setAttribute("aria-expanded", "false");
       }
     });
+  })();
+</script>
+<script>
+  // Vaste "Duale carrièrebegeleiding"-badge: onopvallende overgang zolang
+  // de bordeaux hero (#top) er nog achter zit, een strakke lijn zodra de
+  // hero volledig is voorbijgescrold. #top wordt bij elke controle
+  // opnieuw opgezocht (niet gecachet) om dezelfde reden als hierboven:
+  // support.js kan dat element op enig moment vervangen.
+  (function () {
+    function update() {
+      var badge = document.getElementById("gp-eyebrow-sticky");
+      var hero = document.getElementById("top");
+      if (!badge || !hero) return;
+      var badgeBottom = badge.getBoundingClientRect().bottom;
+      var heroBottom = hero.getBoundingClientRect().bottom;
+      badge.classList.toggle("is-past-hero", heroBottom <= badgeBottom);
+    }
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    var pollStart = Date.now();
+    var poll = setInterval(function () {
+      if (Date.now() - pollStart > 10000) {
+        clearInterval(poll);
+        return;
+      }
+      update();
+    }, 300);
   })();
 </script>
 <script>
