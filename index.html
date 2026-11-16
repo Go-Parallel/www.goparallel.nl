@@ -117,24 +117,26 @@
   /* "Voor wie" — twee routes (Parallel Personal / Parallel Program). */
   .gp-vw-routes{margin-top:48px;border-top:1px solid var(--line);padding-top:40px;}
   .gp-vw-intro{font-family:'Hanken Grotesk',sans-serif;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:700px;}
-  .gp-vw-tabs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
-  .gp-vw-tab{font:inherit;text-align:left;cursor:pointer;display:block;width:100%;padding:22px 26px;min-height:44px;box-sizing:border-box;border-radius:0;background:#FAEFD8;border:1px solid #DCC9A6;border-bottom:3px solid var(--bordeaux-deep);}
+  .gp-vw-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:24px;}
+  .gp-vw-tab{font:inherit;text-align:left;cursor:pointer;display:block;width:100%;padding:22px 26px;min-height:44px;box-sizing:border-box;border-radius:0;background:#FAEFD8;border:1px solid #DCC9A6;border-bottom:0;}
   .gp-vw-tab small{display:block;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--bordeaux);}
   .gp-vw-tab strong{display:block;font-family:var(--font-display);font-weight:600;font-size:30px;line-height:1.1;color:var(--ink);margin-top:8px;}
   .gp-vw-tab span{display:block;font-size:14.5px;line-height:1.5;color:var(--ink-2);margin-top:8px;}
-  .gp-vw-tab[aria-selected="true"]{background:var(--bordeaux-deep);border-color:var(--bordeaux-deep);border-bottom-color:var(--gold);}
+  .gp-vw-tab[aria-selected="true"]{background:var(--bordeaux-deep);border-color:var(--bordeaux-deep);border-bottom:0;color:#fff;}
   .gp-vw-tab[aria-selected="true"] small{color:var(--gold-soft);}
   .gp-vw-tab[aria-selected="true"] strong{color:#fff;}
   .gp-vw-tab[aria-selected="true"] span{color:rgba(255,255,255,.85);}
   .gp-vw-tab:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
-  .gp-vw-panel{margin-top:28px;}
+  .gp-vw-panel{margin-top:0;background:var(--bordeaux-deep);border-top:3px solid var(--gold);padding:24px;box-sizing:border-box;}
+  .gp-vw-panel>p{color:rgba(255,255,255,.88);}
   .gp-vw-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px;}
-  .gp-vw-card{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--gold);padding:22px 20px;box-sizing:border-box;}
-  .gp-vw-program .gp-vw-card{border-top-color:var(--bordeaux-deep);}
+  .gp-vw-card{background:var(--paper);border:0;padding:22px 20px;box-sizing:border-box;}
+  .gp-vw-panel .gp-vw-card{border-top:0;}
   .gp-vw-card strong{display:block;font-family:var(--font-display);font-weight:600;font-size:21px;line-height:1.2;color:var(--ink);}
   .gp-vw-card span{display:block;font-size:14.5px;line-height:1.5;color:var(--ink-2);margin-top:8px;}
   @media (max-width:700px){
     .gp-vw-tabs{grid-template-columns:1fr;}
+    .gp-vw-panel{padding:16px;}
   }
 </style>
 </helmet>
