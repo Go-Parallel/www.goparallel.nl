@@ -144,8 +144,8 @@
     .gp-vw-panel{padding:16px;}
   }
 
-  #gp-eyebrow-sticky{background-image:linear-gradient(#580D15,#580D15 60%,rgba(88,13,21,0));box-shadow:0 1px 0 0 rgba(253,177,58,0);transition:box-shadow .6s ease;}
-  #gp-eyebrow-sticky.is-past-hero{background-image:none;background-color:#580D15;box-shadow:0 1px 0 0 rgba(253,177,58,.18);}
+  #gp-eyebrow-sticky{position:relative;z-index:3;box-shadow:0 1px 0 0 rgba(253,177,58,0);transition:box-shadow .6s ease;}
+  #gp-eyebrow-sticky.is-past-hero{position:fixed;top:72px;left:0;right:0;z-index:39;background-image:none;background-color:#580D15;box-shadow:0 1px 0 0 rgba(253,177,58,.18);padding:12px 24px 18px;box-sizing:border-box;}
 </style>
 </helmet>
 
@@ -177,13 +177,13 @@
   </div>
 
   <!-- HERO -->
-  <div id="top" class="gp-section" style="position:relative;overflow:hidden;background-color:#6E0F18;min-height:520px;box-sizing:border-box;padding:clamp(18px,3.4vw,28px) 24px;border-bottom:2px solid var(--gold);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;scroll-margin-top:64px">
+  <div id="top" class="gp-section" style="position:relative;overflow:hidden;background-color:#6E0F18;min-height:340px;box-sizing:border-box;padding:clamp(18px,3.4vw,28px) 24px;border-bottom:2px solid var(--gold);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;scroll-margin-top:64px">
     <div style="position:absolute;inset:0;z-index:1;display:flex">
-      <img src="uploads/hero-coach.jpg" alt="" style="width:50%;height:100%;object-fit:cover;object-position:50% 48%;display:block;filter:grayscale(.25);mix-blend-mode:luminosity;opacity:.55">
-      <img src="uploads/hero-team.jpg" alt="" style="width:50%;height:100%;object-fit:cover;object-position:50% 30%;display:block;filter:grayscale(.25);mix-blend-mode:luminosity;opacity:.55">
+      <img src="uploads/hero-coach.jpg" alt="" style="width:50%;height:100%;object-fit:cover;object-position:50% 60%;display:block;transform:scale(1.3);filter:grayscale(.25);mix-blend-mode:luminosity;opacity:.55;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent 99%);mask-image:linear-gradient(90deg,#000 88%,transparent 99%)">
+      <img src="uploads/hero-team.jpg" alt="" style="width:50%;height:100%;object-fit:cover;object-position:50% 30%;display:block;filter:grayscale(.25);mix-blend-mode:luminosity;opacity:.55;-webkit-mask-image:linear-gradient(270deg,#000 88%,transparent 99%);mask-image:linear-gradient(270deg,#000 88%,transparent 99%)">
     </div>
     <div style="position:absolute;inset:0;z-index:2;background:radial-gradient(60% 85% at 50% 45%, rgba(110,15,24,.92), rgba(110,15,24,.62) 55%, rgba(78,10,17,.88))"></div>
-    <div id="gp-eyebrow-sticky" style="position:fixed;top:72px;left:0;right:0;z-index:39;display:flex;align-items:center;justify-content:center;gap:12px;padding:12px 24px 18px;box-sizing:border-box">
+    <div id="gp-eyebrow-sticky" style="display:flex;align-items:center;justify-content:center;gap:12px">
       <span style="width:36px;height:1px;background:var(--gold)"></span>
       <span class="gp-eyebrow" style="font-size:11px;letter-spacing:0.22em;color:#FFF1CE">Duale carrièrebegeleiding</span>
       <span style="width:36px;height:1px;background:var(--gold)"></span>
@@ -494,9 +494,9 @@
       var badge = document.getElementById("gp-eyebrow-sticky");
       var hero = document.getElementById("top");
       if (!badge || !hero) return;
-      var badgeBottom = badge.getBoundingClientRect().bottom;
       var heroBottom = hero.getBoundingClientRect().bottom;
-      badge.classList.toggle("is-past-hero", heroBottom <= badgeBottom);
+      // 72 (navhoogte) + de hoogte van de vaste badge zelf.
+      badge.classList.toggle("is-past-hero", heroBottom <= 117);
     }
     update();
     window.addEventListener("scroll", update, { passive: true });
