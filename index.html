@@ -86,7 +86,7 @@
     .gp-grid4{grid-template-columns:1fr !important;}
     .gp-nav{padding:0 20px;}
     .gp-section{padding-left:24px !important;padding-right:24px !important;}
-    #top{min-height:170px !important;}
+    #top{min-height:320px !important;}
     .gp-footer-inner{flex-direction:column;justify-content:center;text-align:center;padding:24px 0;gap:8px !important;}
     .gp-footer-meta{flex-direction:column;gap:6px;text-align:center;}
   }
@@ -143,8 +143,8 @@
     .gp-vw-panel{padding:16px;}
   }
 
-  #gp-eyebrow-sticky{background-image:linear-gradient(#580D15,#580D15 60%,rgba(88,13,21,0));border-bottom:1px solid rgba(253,177,58,0);transition:border-color .6s ease;}
-  #gp-eyebrow-sticky.is-past-hero{background-image:none;background-color:#580D15;border-color:rgba(253,177,58,.18);}
+  #gp-eyebrow-sticky{background-image:linear-gradient(#580D15,#580D15 60%,rgba(88,13,21,0));box-shadow:0 1px 0 0 rgba(253,177,58,0);transition:box-shadow .6s ease;}
+  #gp-eyebrow-sticky.is-past-hero{background-image:none;background-color:#580D15;box-shadow:0 1px 0 0 rgba(253,177,58,.18);}
 </style>
 </helmet>
 
@@ -176,23 +176,27 @@
   </div>
 
   <!-- HERO -->
-  <div id="top" class="gp-section" style="background-color:#6E0F18;background-image:linear-gradient(#580D15,transparent 220px),radial-gradient(70% 90% at 50% 110%,rgba(253,177,58,0.18),transparent 60%);min-height:170px;box-sizing:border-box;padding:clamp(18px,3.4vw,28px) 24px;border-bottom:2px solid var(--gold);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;scroll-margin-top:64px">
+  <div id="top" class="gp-section" style="position:relative;overflow:hidden;background-color:#6E0F18;min-height:520px;box-sizing:border-box;padding:clamp(18px,3.4vw,28px) 24px;border-bottom:2px solid var(--gold);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;scroll-margin-top:64px">
+    <div style="position:absolute;inset:0;z-index:1;display:flex">
+      <img src="uploads/hero-coach.jpg" alt="" style="width:50%;height:100%;object-fit:cover;object-position:50% 30%;display:block;filter:grayscale(.25);mix-blend-mode:luminosity;opacity:.55">
+      <img src="uploads/hero-team.jpg" alt="" style="width:50%;height:100%;object-fit:cover;object-position:50% 30%;display:block;filter:grayscale(.25);mix-blend-mode:luminosity;opacity:.55">
+    </div>
+    <div style="position:absolute;inset:0;z-index:2;background:radial-gradient(60% 85% at 50% 45%, rgba(110,15,24,.92), rgba(110,15,24,.62) 55%, rgba(78,10,17,.88))"></div>
     <div id="gp-eyebrow-sticky" style="position:fixed;top:72px;left:0;right:0;z-index:39;display:flex;align-items:center;justify-content:center;gap:12px;padding:12px 24px 18px;box-sizing:border-box">
       <span style="width:36px;height:1px;background:var(--gold)"></span>
       <span class="gp-eyebrow" style="font-size:11px;letter-spacing:0.22em;color:#FFF1CE">Duale carrièrebegeleiding</span>
       <span style="width:36px;height:1px;background:var(--gold)"></span>
     </div>
-    <div style="font-family:var(--font-script);font-size:clamp(48px,7vw,96px);line-height:0.85;margin-top:14px;color:var(--gold)"><span style="font-family:'Birthstone',cursive;font-size:1.11em;line-height:0">G</span><span style="margin-left:-.04em;margin-right:.1em">o</span>Para<span style="color:#FFF1CE">ll</span>el</div>
-    <h1 style="margin:10px 0 0;font-family:var(--font-display);font-weight:500;font-size:clamp(15px,4.6vw,26px);line-height:1.15;white-space:nowrap">Sport én studie, parallel begeleid.</h1>
+    <div style="position:relative;z-index:3;font-family:var(--font-script);font-size:clamp(48px,7vw,96px);line-height:0.85;margin-top:14px;color:var(--gold)"><span style="font-family:'Birthstone',cursive;font-size:1.11em;line-height:0">G</span><span style="margin-left:-.04em;margin-right:.1em">o</span>Para<span style="color:#FFF1CE">ll</span>el</div>
+    <h1 style="position:relative;z-index:3;margin:10px 0 0;font-family:var(--font-display);font-weight:500;font-size:clamp(15px,4.6vw,26px);line-height:1.15;white-space:nowrap">Sport én studie, parallel begeleid.</h1>
   </div>
 
   <div class="gp-blocks">
 
   <!-- VOOR WIE -->
   <div class="gp-block">
-    <div style="display:flex;align-items:center;gap:12px"><span style="width:28px;height:2px;background:var(--gold);border-radius:2px"></span><span class="gp-eyebrow" style="color:var(--gold-deep)">Voor wie</span></div>
-    <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(26px,3.4vw,32px);line-height:1.2;margin-top:16px">Voor (top)sport-studenten die willen investeren in sport <span style="color: #E0922A; font-style: italic">én</span> studie</h2>
-    <p style="font-size:16.5px;line-height:1.6;color:var(--ink-2);max-width:640px;margin-top:16px">Als (top)sport‑student combineer je intensieve trainingen met je studie. <br>GoParallel ondersteunt je bij het combineren van beide carrières, waardoor je niet hoeft te kiezen en sport en studie naast elkaar kunnen bestaan.</p>
+    <p style="font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(19px,2.6vw,23px);line-height:1.5;color:var(--ink-2);max-width:680px">Elke topsportcarrière heeft een einde, soms gepland, soms door een blessure of deselectie. Dat is geen reden om minder te geven, wel een reden om nu al na te denken over wat daarna komt.</p>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:28px"><span style="width:28px;height:2px;background:var(--gold);border-radius:2px"></span><span class="gp-eyebrow" style="color:var(--gold-deep)">Voor wie</span></div>
 
     <div class="gp-vw-routes">
       <p class="gp-vw-intro">GoParallel werkt via twee routes: rechtstreeks met de sporter en zijn ouders, of via de school, bond of club waar de sporter traint en studeert.</p>
